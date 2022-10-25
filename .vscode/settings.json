@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "*.json5": "json5",
+  },
+  "prettier.configPath": ".github/linters/.prettierrc.yaml",
+  "prettier.ignorePath": ".github/linters/.prettierignore",
+  "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.fontLigatures": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs":"active",
+  "editor.hover.delay": 1500,
+  "explorer.autoReveal": false
+}
