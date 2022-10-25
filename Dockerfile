@@ -4,7 +4,7 @@ FROM alpine:3.16.2
 COPY --from=mc /usr/bin/mc /usr/bin/mc
 
 RUN apk update && \
-  apk add --no-cache ca-certificates bash gzip tzdata postgresql-client
+  apk add --no-cache ca-certificates curl bash gzip tzdata postgresql-client
 
 COPY run.sh env.sh /
 
