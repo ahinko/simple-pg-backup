@@ -26,7 +26,7 @@ There is no restore option, do it manually by using `psql` or `pg_restore`.
 
 * `MINIO_SECRET_KEY`
 
-* `MINIO_HOST` Hostname and port (if needed). Example: minio.local.dev:9000
+* `MINIO_HOST` Hostname and port (if needed). Example: `minio.local.dev:9000`
 
 * `MINIO_BUCKET` Bucket name (must be lowercase). A subfolder based on `BACKUP_NAME` will be created. So setting `MINIO_BUCKET` to `backup` and `BACKUP_NAME` to `postgres` would upload the backup to `backup/postgres`
 
