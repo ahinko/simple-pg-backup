@@ -23,8 +23,6 @@ jobs:
 
       - name: MegaLinter
         uses: oxsecurity/megalinter@v6.13.0
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
         env:
           PRINT_ALPACA: false
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'workflow_dispatch' }}
@@ -55,3 +53,4 @@ jobs:
           MARKDOWN_MARKDOWNLINT_RULES_PATH: .github/
           YAML_YAMLLINT_CONFIG_FILE: .github/linters/.yamllint.yaml
           YAML_PRETTIER_CONFIG_FILE: .github/linters/.prettierrc.yaml
+          DOCKERFILE_HADOLINT_CONFIG_FILE: .github/linters/.hadolint.yaml
