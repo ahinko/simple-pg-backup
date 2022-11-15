@@ -36,6 +36,15 @@
       "matchPackageNames": [
         "quay.io/minio/mc"
       ]
-    }
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "versioning": "regex:^(?<major>\\d{2}).(?<minor>\\d{1,2})-(?<compatibility>.*)$",
+      "matchPackageNames": [
+        "postgres"
+      ]
+    },
   ]
 }
