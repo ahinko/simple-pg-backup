@@ -4,6 +4,9 @@ name: Create and publish a Docker image
 on:
   release:
     types: [released, prereleased]
+  workflow_run:
+    workflows: ["Create release"]
+    types: [completed]
 
 env:
   REGISTRY: ghcr.io
