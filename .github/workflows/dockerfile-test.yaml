@@ -15,8 +15,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Build and push
-        uses: docker/build-push-action@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build and scan image
+        uses: ISID/build-and-scan-image@v0.2.0
         with:
-          push: false
-          context: .
+          tag: "ahinko/simple-pg-backup:${{ github.sha }}"
+          path: "."
