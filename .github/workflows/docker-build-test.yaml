@@ -1,5 +1,5 @@
 ---
-name: Docker build & scan
+name: Docker build test
 
 on: # yamllint disable-line rule:truthy
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Build and push
+      - name: Build
         uses: docker/build-push-action@v3
         with:
           push: false
