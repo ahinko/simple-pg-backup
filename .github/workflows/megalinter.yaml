@@ -47,8 +47,6 @@ jobs:
                 ','
               )
             }}
-          ANSIBLE_DIRECTORY: infrastructure
-          ANSIBLE_ANSIBLE_LINT_CONFIG_FILE: .ansible-lint
           MARKDOWN_MARKDOWNLINT_CONFIG_FILE: .github/linters/.markdownlint.yaml
           MARKDOWN_MARKDOWNLINT_RULES_PATH: .github/
           YAML_YAMLLINT_CONFIG_FILE: .github/linters/.yamllint.yaml
