@@ -1,6 +1,6 @@
 FROM quay.io/minio/mc:RELEASE.2022-12-24T15-21-38Z AS mc
 FROM postgres:15.1-alpine AS postgres
-FROM alpine:3.17.0
+FROM alpine:3.17.1
 
 COPY --from=mc /usr/bin/mc /usr/bin/mc
 COPY --from=postgres /usr/local/bin/pg_dump /usr/local/bin/pg_dump
