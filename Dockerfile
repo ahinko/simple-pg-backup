@@ -1,4 +1,4 @@
-FROM quay.io/minio/mc:RELEASE.2022-12-24T15-21-38Z AS mc
+FROM quay.io/minio/mc:RELEASE.2023-01-11T03-14-16Z AS mc
 FROM postgres:15.1-alpine AS postgres
 FROM alpine:3.17.1
 
