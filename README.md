@@ -1,6 +1,6 @@
 # simple-pg-backup
 
-A simple Docker container for backing up Postgres databases to a Minio server. This script is highly opinionated and tailored for my needs. **I take no responsibility so use this at your own risk.**
+A simple Docker container for backing up Postgres (v16) databases to a Minio server. This script is highly opinionated and tailored for my needs. **I take no responsibility so use this at your own risk.**
 
 How the backup script in the container works: Using the `POSTGRES_DATABASE` the script will loop through the list of databases and run a `pg_dump` on the table and upload the file to a Minio server.
 
