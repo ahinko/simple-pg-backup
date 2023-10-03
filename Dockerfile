@@ -5,6 +5,8 @@ FROM public.ecr.aws/docker/library/alpine:3.18.4
 COPY --from=mc /usr/bin/mc /usr/bin/mc
 COPY --from=postgres /usr/local/bin/pg_dump /usr/local/bin/pg_dump
 COPY --from=postgres /usr/local/lib/libpq.so.5 /usr/local/lib/libpq.so.5
+COPY --from=postgres /usr/lib/libzstd.so.1 /usr/local/lib/libzstd.so.1
+COPY --from=postgres /usr/lib/liblz4.so.1 /usr/local/lib/liblz4.so.1
 
 RUN apk update && \
   apk add --no-cache ca-certificates \
