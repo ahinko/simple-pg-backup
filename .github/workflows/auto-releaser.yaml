@@ -32,7 +32,7 @@ jobs:
 
       - name: Calculate next version number
         id: next_version
-        uses: zwaldowski/semver-release-action@v3
+        uses: zwaldowski/semver-release-action@v4
         with:
           bump: ${{ steps.bump.outputs.match }}
           prefix: v
