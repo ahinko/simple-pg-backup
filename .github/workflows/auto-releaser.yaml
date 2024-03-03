@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Find version increment (major, minor or patch) based on tags on pull request
         id: bump
-        uses: zwaldowski/match-label-action@v4
+        uses: zwaldowski/match-label-action@v5
         with:
           allowed: major, minor, patch
 
