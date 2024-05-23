@@ -72,7 +72,7 @@ for DB in ${POSTGRES_DBS}; do
   fi
 
   # Upload backup
-  mc cp "${BACKUP_PATH}" minio/${MINIO_BUCKET}/${BACKUP_NAME}/${BACKUP_FILENAME}
+  mc cp "${BACKUP_PATH}" minio/${MINIO_BUCKET}/${BACKUP_NAME}/${BACKUP_FILENAME}.${BACKUP_FILE_EXTENSION}
   if [ $? != 0 ] ; then
       echo "Failed to upload timestamped backup"
       exit 1;
