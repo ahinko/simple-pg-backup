@@ -24,7 +24,7 @@ There is no restore option, do it manually by using `psql` or `pg_restore`.
 
 * `COMPRESS` If the backup should be compressed. Example: `COMPRESS=true`. Default: `COMPRESS=false`
 
-* `VERIFY_COMPRESSION` If the backup should be compressed. Example: `VERIFY_COMPRESSION=true`. Default: `VERIFY_COMPRESSION=false`
+* `VERIFY_COMPRESSION` If the compressed backup should be verified. The verification is really simple (the file is decompressed and the script checks for errors). If verification fails the script will fail and the backup will not be uploaded. Also note that this is done database by database so if multiple databases are backed up and the verifiaction fails, the following databases will not be backed up. Example: `VERIFY_COMPRESSION=true`. Default: `VERIFY_COMPRESSION=false`
 
 * `MINIO_ACCESS_KEY`
 
