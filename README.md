@@ -22,6 +22,10 @@ There is no restore option, do it manually by using `psql` or `pg_restore`.
 
 * `BACKUP_NAME` Filename used by the backup process to name the archived file. Example: "postgres". The script will add the current date and time to the filename.
 
+* `COMPRESS` If the backup should be compressed. Example: `COMPRESS=true`. Default: `COMPRESS=false`
+
+* `VERIFY_COMPRESSION` If the backup should be compressed. Example: `VERIFY_COMPRESSION=true`. Default: `VERIFY_COMPRESSION=false`
+
 * `MINIO_ACCESS_KEY`
 
 * `MINIO_SECRET_KEY`
