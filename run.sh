@@ -12,22 +12,12 @@ COMPRESS=${COMPRESS:-false}
 VERIFY_COMPRESSION=${VERIFY_COMPRESSION:-false}
 
 ########
-
-LOCAL_PATH="./dump/"
-BACKUP_FILE_EXTENSION="sql"
 POSTGRES_DBS=$(echo "${POSTGRES_DB}" | tr , " ")
-
-if [ ${COMPRESS} == true ]; then
-    POSTGRES_EXTRA_OPTS="${POSTGRES_EXTRA_OPTS} -Z6"
-    BACKUP_FILE_EXTENSION="sql.gz"
-fi
 
 export PGUSER="${POSTGRES_USER}"
 export PGPASSWORD="${POSTGRES_PASSWORD}"
 export PGHOST="${POSTGRES_HOST}"
 export PGPORT="${POSTGRES_PORT}"
-
-mkdir -p ${LOCAL_PATH}
 
 # Configure minio cli
 mc alias set minio ${MINIO_HOST} ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY}
@@ -46,9 +36,9 @@ fi
 
 for DB in ${POSTGRES_DBS}; do
   BACKUP_FILENAME=${DB}-$(date +%Y%m%d_%H%M%S)
-  BACKUP_PATH=${LOCAL_PATH}${BACKUP_FILENAME}.${BACKUP_FILE_EXTENSION}
+  BACKUP_PATH=${BACKUP_FILENAME}.sql
 
-  echo "Backup $DB to $BACKUP_PATH with extra options: ${POSTGRES_EXTRA_OPTS} and uploading to ${MINIO_HOST}"
+  echo "Backup $DB and upload to ${MINIO_HOST}"
 
   # Dump database
   pg_dump -d ${DB} ${POSTGRES_EXTRA_OPTS} > ${BACKUP_PATH}
@@ -57,6 +47,13 @@ for DB in ${POSTGRES_DBS}; do
   if [ $? != 0 ] ; then
       echo "Failed to backup $DB"
       exit 1;
+  fi
+
+  if [ ${COMPRESS} == true ]; then
+      gzip -9 ${BACKUP_PATH}
+
+      # Change file extension since we have compressed it
+      BACKUP_PATH=${BACKUP_PATH}.gz
   fi
 
   # Verify compression
@@ -72,7 +69,7 @@ for DB in ${POSTGRES_DBS}; do
   fi
 
   # Upload backup
-  mc cp "${BACKUP_PATH}" minio/${MINIO_BUCKET}/${BACKUP_NAME}/${BACKUP_FILENAME}.${BACKUP_FILE_EXTENSION}
+  mc cp "${BACKUP_PATH}" minio/${MINIO_BUCKET}/${BACKUP_NAME}/${BACKUP_PATH}
   if [ $? != 0 ] ; then
       echo "Failed to upload timestamped backup"
       exit 1;
