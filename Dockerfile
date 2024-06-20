@@ -1,6 +1,6 @@
 FROM quay.io/minio/mc:RELEASE.2024-06-12T14-34-03Z AS mc
 FROM postgres:16.3-alpine AS postgres
-FROM public.ecr.aws/docker/library/alpine:3.20.0
+FROM public.ecr.aws/docker/library/alpine:3.20.1
 
 COPY --from=mc /usr/bin/mc /usr/bin/mc
 COPY --from=postgres /usr/local/bin/pg_dump /usr/local/bin/pg_dump
