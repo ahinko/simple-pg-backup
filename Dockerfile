@@ -1,4 +1,4 @@
-FROM quay.io/minio/mc:RELEASE.2024-10-02T08-27-28Z AS mc
+FROM quay.io/minio/mc:RELEASE.2024-10-08T09-37-26Z AS mc
 FROM postgres:16.4-alpine AS postgres
 FROM public.ecr.aws/docker/library/alpine:3.20.3
 
