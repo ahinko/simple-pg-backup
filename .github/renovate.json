@@ -3,30 +3,63 @@
   "timezone": "Europe/Stockholm",
   "dependencyDashboard": true,
   "dependencyDashboardTitle": "🤖 Renovate Dashboard",
-  "suppressNotifications": ["prIgnoreNotification"],
+  "suppressNotifications": [
+    "prIgnoreNotification"
+  ],
   "rebaseWhen": "conflicted",
-  "assignees": ["@ahinko"],
+  "assignees": [
+    "@ahinko"
+  ],
   "semanticCommits": "enabled",
   "packageRules": [
     {
-      "datasources": ["docker"],
+      "matchDatasources": [
+        "docker"
+      ],
       "enabled": true,
-      "updateTypes": ["major", "minor", "patch"]
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch"
+      ]
     },
     {
-      "datasources": ["docker"],
-      "updateTypes": ["major"],
-      "labels": ["renovate/image-release", "dependency/major"]
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "labels": [
+        "renovate/image-release",
+        "dependency/major"
+      ]
     },
     {
-      "datasources": ["docker"],
-      "updateTypes": ["minor"],
-      "labels": ["renovate/image-release", "dependency/minor", "patch"]
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "labels": [
+        "renovate/image-release",
+        "dependency/minor",
+        "patch"
+      ]
     },
     {
-      "datasources": ["docker"],
-      "updateTypes": ["patch"],
-      "labels": ["renovate/image-release", "dependency/patch", "patch"]
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "labels": [
+        "renovate/image-release",
+        "dependency/patch",
+        "patch"
+      ]
     },
     {
       "matchDatasources": [
