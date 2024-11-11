@@ -9,42 +9,34 @@
   "semanticCommits": "enabled",
   "packageRules": [
     {
-      "datasources": ["docker"],
+      "matchDatasources": ["docker"],
       "enabled": true,
-      "updateTypes": ["major", "minor", "patch"]
+      "matchUpdateTypes": ["major", "minor", "patch"]
     },
     {
-      "datasources": ["docker"],
-      "updateTypes": ["major"],
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major"],
       "labels": ["renovate/image-release", "dependency/major"]
     },
     {
-      "datasources": ["docker"],
-      "updateTypes": ["minor"],
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor"],
       "labels": ["renovate/image-release", "dependency/minor", "patch"]
     },
     {
-      "datasources": ["docker"],
-      "updateTypes": ["patch"],
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["patch"],
       "labels": ["renovate/image-release", "dependency/patch", "patch"]
     },
     {
-      "matchDatasources": [
-        "docker"
-      ],
+      "matchDatasources": ["docker"],
       "versioning": "regex:RELEASE\\.(?<major>\\d{4})-(?<minor>\\d{2})-(?<patch>\\d{2})T([0-9-]*)Z$",
-      "matchPackageNames": [
-        "quay.io/minio/mc"
-      ]
+      "matchPackageNames": ["quay.io/minio/mc"]
     },
     {
-      "matchDatasources": [
-        "docker"
-      ],
+      "matchDatasources": ["docker"],
       "versioning": "regex:^(?<major>\\d{2}).(?<minor>\\d{1,2})-(?<compatibility>.*)$",
-      "matchPackageNames": [
-        "postgres"
-      ]
+      "matchPackageNames": ["postgres"]
     }
   ]
 }
