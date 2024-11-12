@@ -101,16 +101,15 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest
-            type=raw,value=${{ steps.semver.outputs.major }}
-            type=raw,value=${{ steps.semver.outputs.major }}.${{ steps.semver.outputs.minor }}
-            type=raw,value=${{needs.release.outputs.new_version}}
+            type=raw,value=v${{ steps.semver.outputs.major }}
+            type=raw,value=v${{ steps.semver.outputs.major }}.${{ steps.semver.outputs.minor }}
+            type=raw,value=v${{ steps.semver.outputs.major }}.${{ steps.semver.outputs.minor }}.${{ steps.semver.outputs.patch }}
             type=sha
 
       - name: Build and push
         uses: docker/build-push-action@v6.9.0
         with:
           context: .
-          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

@@ -28,16 +28,28 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Parse version from string
+        id: semver
+        uses: release-kit/semver@v2.0.7
+        with:
+          string: ${{github.ref_name}}
+
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v5.5.1
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest
+            type=raw,value=v${{ steps.semver.outputs.major }}
+            type=raw,value=v${{ steps.semver.outputs.major }}.${{ steps.semver.outputs.minor }}
+            type=raw,value=v${{ steps.semver.outputs.major }}.${{ steps.semver.outputs.minor }}.${{ steps.semver.outputs.patch }}
+            type=sha
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+      - name: Build and push
+        uses: docker/build-push-action@v6.9.0
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{github.ref_name}}, ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
