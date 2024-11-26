@@ -40,7 +40,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Determine tag"
-        run: 'echo "RELEASE_TAG=${{ steps.next_version.outputs.version_tag }}" >> $GITHUB_ENV'
+        run: "echo 'RELEASE_TAG=${{ steps.next_version.outputs.version_tag }}' >> $GITHUB_ENV"
         shell: "bash"
 
       - name: Create new release
